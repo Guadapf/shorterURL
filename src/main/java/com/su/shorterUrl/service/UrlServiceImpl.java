@@ -58,8 +58,11 @@ public class UrlServiceImpl implements IUrlService {
 
     @Transactional
     @Override
-    public Url updateUrl(String shortCode, String url) {
+    public Url updateUrl(String shortCode, String url) throws Exception {
         Url urlObtained = urlRepository.findByShortCode(shortCode);
+        if(urlObtained == null){
+            throw new Exception("El url que intentas actualizar no existe.");
+        }
         urlObtained.setUrl(url);
         urlObtained.setUpdatedAt(LocalDateTime.now());
         return urlRepository.save(urlObtained);

@@ -6,7 +6,7 @@ public interface IUrlService {
 
     Url addUrl(String url);
     Url getUrl(String shortCode) throws Exception;
-    Url updateUrl(String shortCode, String url);
+    Url updateUrl(String shortCode, String url) throws Exception;
     void delete(Url urlObtained);
 
 }

@@ -44,7 +44,7 @@ public class UrlController {
         try{
             Url response = urlService.updateUrl(shortCode, url.getUrl());
             return new ResponseEntity<>(response, HttpStatus.OK);
-        }catch(DataAccessException e){
+        }catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }
     }
