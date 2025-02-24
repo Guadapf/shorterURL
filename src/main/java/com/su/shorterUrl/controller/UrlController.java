@@ -1,5 +1,6 @@
 package com.su.shorterUrl.controller;
 
+import com.su.shorterUrl.model.dto.UrlRequest;
 import com.su.shorterUrl.model.entity.Url;
 import com.su.shorterUrl.service.interfaces.IUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class UrlController {
 
     @PostMapping
     @ResponseStatus
-    public ResponseEntity<?> addUrl(@RequestBody String url){
+    public ResponseEntity<?> addUrl(@RequestBody UrlRequest url){
         try{
-            Url urlObtained = urlService.addUrl(url);
+            Url urlObtained = urlService.addUrl(url.getUrl());
             return new ResponseEntity<>(urlObtained, HttpStatus.CREATED);
         }catch (DataAccessException e){
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
@@ -39,9 +40,9 @@ public class UrlController {
 
     @PutMapping("/{shortCode}")
     @ResponseStatus
-    public ResponseEntity<?> updateUrl(@PathVariable String shortCode, @RequestBody String url){
+    public ResponseEntity<?> updateUrl(@PathVariable String shortCode, @RequestBody UrlRequest url){
         try{
-            Url response = urlService.updateUrl(shortCode, url);
+            Url response = urlService.updateUrl(shortCode, url.getUrl());
             return new ResponseEntity<>(response, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
