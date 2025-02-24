@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UrlRepository extends CrudRepository<Url, Integer> {
     Url findByShortCode(String shortCode);
+    boolean existsByShortCode(String shortCode);
 }
