@@ -4,9 +4,9 @@ import com.su.shorterUrl.model.entity.Url;
 
 public interface IUrlService {
 
-    Url addUrl(Url url);
-    Url getUrl(String shortCode);
+    Url addUrl(String url);
+    Url getUrl(String shortCode) throws Exception;
     Url updateUrl(String shortCode, String url);
-    void delete(String shortCode);
+    void delete(Url urlObtained);
 
 }
