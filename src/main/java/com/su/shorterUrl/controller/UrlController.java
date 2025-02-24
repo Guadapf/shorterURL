@@ -4,7 +4,6 @@ import com.su.shorterUrl.model.dto.UrlRequest;
 import com.su.shorterUrl.model.entity.Url;
 import com.su.shorterUrl.service.interfaces.IUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

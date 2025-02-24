@@ -1,10 +1,8 @@
 package com.su.shorterUrl.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.su.shorterUrl.model.dto.UrlRequest;
 import com.su.shorterUrl.model.entity.Url;
-import com.su.shorterUrl.service.interfaces.IUrlService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
