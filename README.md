@@ -45,7 +45,7 @@ Este proyecto está bajo la licencia **MIT**. Siéntete libre de usarlo, modific
 Puedes contactarnos a través de guadapfernandez@gmail.com.  
 
 ---
-
+Proyecto creado a partir de el siguiente link https://roadmap.sh/projects/url-shortening-service
 ¡Gracias por visitar ShorterURL! Esperamos que disfrutes usando esta herramienta tanto como nosotros disfrutamos creándola. 💙  
 
 ✨ **Acorta, comparte y simplifica.** ✨
