@@ -40,7 +40,7 @@ public class UrlServiceImplTest {
         newUrl.setUpdatedAt(LocalDateTime.now());
     }
     @Test
-    public void queSePuedaAgregarUnUrlSatisfactoriamente(){
+    public void queSePuedaAgregarUnUrlSatisfactoriamente() throws Exception {
 
         when(urlRepository.existsByShortCode(anyString())).thenReturn(false);
         when(urlRepository.save(any(Url.class))).thenReturn(newUrl);

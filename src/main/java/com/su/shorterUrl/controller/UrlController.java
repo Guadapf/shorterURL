@@ -22,7 +22,7 @@ public class UrlController {
         try{
             Url urlObtained = urlService.addUrl(url.getUrl());
             return new ResponseEntity<>(urlObtained, HttpStatus.CREATED);
-        }catch (DataAccessException e){
+        }catch (Exception e){
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }
     }

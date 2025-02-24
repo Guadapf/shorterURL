@@ -19,7 +19,10 @@ public class UrlServiceImpl implements IUrlService {
 
     @Transactional
     @Override
-    public Url addUrl(String url) {
+    public Url addUrl(String url) throws Exception {
+        if(url == null || url == ""){
+            throw new Exception("La url ingresada es inválida.");
+        }
         Url newUrl = new Url();
         String shortCode;
 
