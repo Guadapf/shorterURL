@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("/shorten")
 public class UrlController {
@@ -56,6 +58,21 @@ public class UrlController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (Exception e){
             return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/r/{shortCode}")
+    public ResponseEntity<Void> redirectUrl(@PathVariable String shortCode){
+        try {
+            Url urlObtained = urlService.getUrl(shortCode);
+            return ResponseEntity
+                    .status(HttpStatus.FOUND)
+                    .location(URI.create(urlObtained.getUrl()))
+                    .build();
+        }catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
         }
     }
 }
