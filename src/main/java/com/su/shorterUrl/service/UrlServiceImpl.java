@@ -8,6 +8,10 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -20,7 +24,7 @@ public class UrlServiceImpl implements IUrlService {
     @Transactional
     @Override
     public Url addUrl(String url) throws Exception {
-        if(url == null || url == ""){
+        if(!isValidUrl(url)){
             throw new Exception("La url ingresada es inválida.");
         }
         Url newUrl = new Url();
@@ -35,6 +39,15 @@ public class UrlServiceImpl implements IUrlService {
         newUrl.setCreatedAt(LocalDateTime.now());
         newUrl.setUpdatedAt(LocalDateTime.now());
         return urlRepository.save(newUrl);
+    }
+
+    private boolean isValidUrl(String url) {
+        try {
+            URL uri = new URL(url);
+            return true;
+        }catch(MalformedURLException e) {
+            return false;
+        }
     }
 
     private String generateRandomCode(int length){
