@@ -126,7 +126,7 @@ DELETE /shorten/{shortCode}
 ### **5️⃣ Redirigir a la URL original**
 **Endpoint:**
 ```http
-GET /shorten/r/{shortCode}
+http://localhost:{port}/shorten/r/{shortCode}
 ```
 **Descripción:** Redirige automáticamente a la URL original a partir de un shortCode.
 
