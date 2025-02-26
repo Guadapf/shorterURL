@@ -21,9 +21,137 @@ Este es un proyecto simple pero poderoso: una API diseñada para acortar URLs la
 
 ---
 
-## ¿Cómo empezar? 🛠️
+# URL Shortener API
 
-Pronto agregaremos la documentación completa para que puedas integrar ShorterURL en tus proyectos. ¡Mantente atento! 👀  
+Esta API permite acortar URLs largas, obtener información sobre las URLs acortadas, actualizarlas, eliminarlas y redirigir a la URL original mediante un shortCode.
+
+## 📌 Endpoints
+
+### **1️⃣ Acortar una URL**
+**Endpoint:**
+```http
+POST /shorten 
+```
+**Descripción:** Acorta una URL y devuelve un shortCode único.
+
+**Cuerpo de la solicitud:**
+```json
+{
+    "url": "https://github.com/Guadapf"
+}
+```
+
+**Respuesta:**
+```json
+{
+    "idUrl": 6,
+    "url": "https://github.com/Guadapf",
+    "shortCode": "2Vg2rl",
+    "createdAt": "2025-02-26T14:32:22",
+    "updatedAt": "2025-02-26T14:32:22"
+}
+```
+**Códigos de respuesta:**
+- `201 Created`: URL acortada con éxito.
+- `400 Bad Request`: Error en la solicitud.
+
+---
+
+### **2️⃣ Obtener información de una URL acortada**
+**Endpoint:**
+```http
+GET /shorten/{shortCode}
+```
+**Descripción:** Obtiene los detalles de una URL acortada a partir de su shortCode.
+
+**Ejemplo de respuesta:**
+```json
+{
+    "idUrl": 6,
+    "url": "https://github.com/Guadapf",
+    "shortCode": "2Vg2rl",
+    "createdAt": "2025-02-26T14:32:22",
+    "updatedAt": "2025-02-26T14:32:22"
+}
+```
+**Códigos de respuesta:**
+- `200 OK`: Se encontró la URL.
+- `404 Not Found`: No se encontró la URL.
+
+---
+
+### **3️⃣ Actualizar una URL acortada**
+**Endpoint:**
+```http
+PUT /shorten/{shortCode}
+```
+**Descripción:** Actualiza la URL asociada a un shortCode.
+
+**Cuerpo de la solicitud:**
+```json
+{
+    "url": "https://nueva-url.com"
+}
+```
+**Ejemplo de respuesta:**
+```json
+{
+    "idUrl": 6,
+    "url": "https://nueva-url.com",
+    "shortCode": "2Vg2rl",
+    "createdAt": "2025-02-26T14:32:22",
+    "updatedAt": "2025-02-27T10:00:00"
+}
+```
+**Códigos de respuesta:**
+- `200 OK`: URL actualizada con éxito.
+- `400 Bad Request`: Error en la solicitud.
+- `404 Not Found`: No se encontró la URL.
+
+---
+
+### **4️⃣ Eliminar una URL acortada**
+**Endpoint:**
+```http
+DELETE /shorten/{shortCode}
+```
+**Descripción:** Elimina una URL acortada de la base de datos.
+
+**Códigos de respuesta:**
+- `204 No Content`: URL eliminada con éxito.
+- `404 Not Found`: No se encontró la URL.
+
+---
+
+### **5️⃣ Redirigir a la URL original**
+**Endpoint:**
+```http
+http://localhost:{port}/shorten/r/{shortCode}
+```
+**Descripción:** Redirige automáticamente a la URL original a partir de un shortCode.
+
+**Códigos de respuesta:**
+- `302 Found`: Redirección exitosa.
+- `404 Not Found`: No se encontró la URL.
+
+---
+
+## 🚀 Cómo ejecutar la API
+1. Clonar este repositorio.
+2. Configurar la base de datos en `application.properties`.
+3. Ejecutar el proyecto con:
+   ```sh
+   mvn spring-boot:run
+   ```
+4. La API estará disponible en `http://localhost:8080/`.
+
+---
+
+## 🛠 Tecnologías utilizadas
+- Java 17
+- Spring Boot
+- JPA/Hibernate
+- MySQL
 
 ---
 
@@ -45,7 +173,9 @@ Este proyecto está bajo la licencia **MIT**. Siéntete libre de usarlo, modific
 Puedes contactarnos a través de guadapfernandez@gmail.com.  
 
 ---
-Proyecto creado a partir de el siguiente link https://roadmap.sh/projects/url-shortening-service
+
+Proyecto creado a partir del siguiente link https://roadmap.sh/projects/url-shortening-service  
 ¡Gracias por visitar ShorterURL! Esperamos que disfrutes usando esta herramienta tanto como nosotros disfrutamos creándola. 💙  
 
 ✨ **Acorta, comparte y simplifica.** ✨
+
