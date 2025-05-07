@@ -1,0 +1,7 @@
+com\su\shorterUrl\model\entity\Url.class
+com\su\shorterUrl\controller\UrlController.class
+com\su\shorterUrl\model\dto\UrlRequest.class
+com\su\shorterUrl\service\interfaces\IUrlService.class
+com\su\shorterUrl\service\UrlServiceImpl.class
+com\su\shorterUrl\ShorterUrlApplication.class
+com\su\shorterUrl\model\repository\interfaces\UrlRepository.class
